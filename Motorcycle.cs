@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace PROG8051_Assign3
 {
@@ -10,47 +6,18 @@ namespace PROG8051_Assign3
     {
         public override string Type { get => "MOTORCYCLE"; }
 
-        protected double EngineCapacity;
-        protected string FuelType;
-        protected bool HasFairing;
-
-        public double getEngineCapacity()
-        {
-            return EngineCapacity;
-        }
-
-        public void setEngineCapacity(double value)
-        {
-            EngineCapacity = value;
-        }
-
-        public string getFuelType()
-        {
-            return FuelType;
-        }
-
-        public void setFuelType(string value)
-        {
-            FuelType = value;
-        }
-
-        public bool getHasFairing()
-        {
-            return HasFairing;
-        }
-
-        public void setHasFairing(bool value)
-        {
-            HasFairing = value;
-        }
+        public double EngineCapacity { get; set; }
+        public string FuelType { get; set; }
+        public bool HasFairing { get; set; }
 
         public override void DisplayDetails()
         {
+            // Inherited method
             base.DisplayDetails();
 
-            Console.WriteLine($"EngineCapacity: {EngineCapacity}");
-            Console.WriteLine($"FuelType: {FuelType}");
-            Console.WriteLine($"HasFairing: {HasFairing}");
+            Console.WriteLine($"Engine Capacity: \"{EngineCapacity}\"");
+            Console.WriteLine($"Fuel Type: \"{FuelType}\"");
+            Console.WriteLine($"Has Fairing: \"{HasFairing}\"");
         }
     }
 }

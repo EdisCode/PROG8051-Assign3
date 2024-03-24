@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace PROG8051_Assign3
 {
@@ -10,46 +6,18 @@ namespace PROG8051_Assign3
     {
         public override string Type { get => "TRUCK"; }
 
-        protected double Capacity;
-        protected string TruckType;
-        protected bool FourWheelDrive;
-
-        public double getCapacity()
-        {
-            return Capacity;
-        }
-        public void setCapacity(double value)
-        {
-            Capacity = value;
-        }
-
-        public string getTruckType()
-        {
-            return TruckType;
-        }
-
-        public void setTruckType(string value)
-        {
-            TruckType = value;
-        }
-
-        public bool getFourWheelDrive()
-        {
-            return FourWheelDrive;
-        }
-
-        public void setFourWheelDrive(bool value)
-        {
-            FourWheelDrive = value;
-        }
+        public double Capacity { get; set; }
+        public string TruckType { get; set; }
+        public bool FourWheelDrive { get; set; }
 
         public override void DisplayDetails()
         {
+            // Inherited method
             base.DisplayDetails();
 
             Console.WriteLine($"Capacity: \"{Capacity}\"");
-            Console.WriteLine($"TruckType: \"{TruckType}\"");
-            Console.WriteLine($"FourWheelDrive: \"{FourWheelDrive}\"");
+            Console.WriteLine($"Truck Type: \"{TruckType}\"");
+            Console.WriteLine($"Four Wheel Drive: \"{FourWheelDrive}\"");
         }
     }
 }

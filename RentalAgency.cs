@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace PROG8051_Assign3
 {
@@ -19,11 +15,13 @@ namespace PROG8051_Assign3
 
         public void init()
         {
+            // Exit running loop if true
             bool shouldExit = false;
 
             while (shouldExit != true)
             {
-                Console.WriteLine("\nMenu:");
+                // Print main menu for rental agency
+                Console.WriteLine("\nSelect and option from the main menu:");
                 Console.WriteLine("\tDisplay fleet:      a");
                 Console.WriteLine("\tAdd to fleet:       b");
                 Console.WriteLine("\tRemove from fleet:  c");
@@ -46,7 +44,7 @@ namespace PROG8051_Assign3
                         RentFromFleet();
                         break;
                     case 'e':
-                        Console.WriteLine($"\nTotal revenue: {TotalRevenue}");
+                        Console.WriteLine($"\n \nTotal revenue: \"${TotalRevenue}\"");
                         break;
                     case 'x':
                         shouldExit = true;
@@ -55,6 +53,7 @@ namespace PROG8051_Assign3
             }
         }
 
+        // Display number of cars, trucks or motorcycles in inventory
         public void DisplayFleet()
         {
 
@@ -64,7 +63,7 @@ namespace PROG8051_Assign3
 
                 if (Char.ToLower(Console.ReadKey().KeyChar) == 'y')
                 {
-                    AddToFleet();
+                    AddToFleet(); // Adds new vehicle to inventory
                 }
                 else
                 {
@@ -72,6 +71,7 @@ namespace PROG8051_Assign3
                 }
             }
 
+            // Get total number of vehicles
             Dictionary<string, int> fleetRecord = new Dictionary<string, int>() { { "CAR", 0 }, { "TRUCK", 0 }, { "MOTORCYCLE", 0 } };
 
             for (int i = 0; i < Fleet.Count; i++)
@@ -84,15 +84,19 @@ namespace PROG8051_Assign3
                 }
             }
 
-            Console.WriteLine("\nFleet:");
-            Console.WriteLine($"\tCars {fleetRecord["CAR"]}");
-            Console.WriteLine($"\tTrucks {fleetRecord["TRUCK"]}");
-            Console.WriteLine($"\tMotorcycles {fleetRecord["MOTORCYCLE"]}");
+            Console.WriteLine("\n \nFleet:");
+            Fleet.ForEach(vehicle => {
+                vehicle.DisplayDetails();
+            });
+            Console.WriteLine($"\nCars: {fleetRecord["CAR"]}");
+            Console.WriteLine($"Trucks: {fleetRecord["TRUCK"]}");
+            Console.WriteLine($"Motorcycles: {fleetRecord["MOTORCYCLE"]}");
         }
 
+        // Adds new vehicle to inventory
         public void AddToFleet()
         {
-            Console.WriteLine("\nEnter vehicle type (Car, Motorcycle, Truck): ");
+            Console.Write("\n \nEnter the vehicle type you want to add (Car, Truck, Motorcycle): ");
             string vehicleType = Console.ReadLine()?.ToUpper();
 
             Vehicle vehicle = null;
@@ -121,26 +125,26 @@ namespace PROG8051_Assign3
 
                             Car car = new Car();
 
-                            Console.Write("Seats: ");
+                            Console.Write("How many seats (1-10): ");
                             int seats = Convert.ToInt32(Console.ReadLine());
 
-                            Console.Write("EngineType: ");
+                            Console.Write("Engine Type: ");
                             string engineType = Console.ReadLine();
 
                             Console.Write("Transmission: ");
                             string transmission = Console.ReadLine();
 
-                            Console.Write("Convertible: ");
+                            Console.Write("Is it a convertible (true/false): ");
                             bool convertible = Convert.ToBoolean(Console.ReadLine());
 
-                            car.setModel(model);
-                            car.setManufacturer(manufacturer);
-                            car.setYear(year);
+                            car.Model = model;
+                            car.Manufacturer = manufacturer;
+                            car.Year = year;
 
-                            car.setSeats(seats);
-                            car.setEngineType(engineType);
-                            car.setTransmission(transmission);
-                            car.setConvertible(convertible);
+                            car.Seats = seats;
+                            car.EngineType = engineType;
+                            car.Transmission = transmission;
+                            car.Convertible = convertible;
 
                             vehicle = car;
                         }
@@ -149,22 +153,22 @@ namespace PROG8051_Assign3
                         {
                             Truck truck = new Truck();
 
-                            Console.Write("Capacity: ");
+                            Console.Write("Capacity (1-1000): ");
                             double capacity = Convert.ToDouble(Console.ReadLine());
 
-                            Console.Write("TruckType: ");
+                            Console.Write("Truck Type: ");
                             string truckType = Console.ReadLine();
 
-                            Console.Write("FourWheelDrive: ");
+                            Console.Write("Is it a four wheel drive (true/false): ");
                             bool fourWheelDrive = Convert.ToBoolean(Console.ReadLine());
 
-                            truck.setModel(model);
-                            truck.setManufacturer(manufacturer);
-                            truck.setYear(year);
+                            truck.Model = model;
+                            truck.Manufacturer = manufacturer;
+                            truck.Year = year;
 
-                            truck.setCapacity(capacity);
-                            truck.setTruckType(truckType);
-                            truck.setFourWheelDrive(fourWheelDrive);
+                            truck.Capacity = capacity;
+                            truck.TruckType = truckType;
+                            truck.FourWheelDrive = fourWheelDrive;
 
                             vehicle = truck;
 
@@ -174,22 +178,22 @@ namespace PROG8051_Assign3
                         {
                             Motorcycle motorcycle = new Motorcycle();
 
-                            Console.Write("EngineCapacity: ");
+                            Console.Write("Engine Capacity (1-1000): ");
                             double engineCapacity = Convert.ToDouble(Console.ReadLine());
 
-                            Console.Write("FuelType: ");
+                            Console.Write("Fuel Type: ");
                             string fuelType = Console.ReadLine();
 
-                            Console.Write("HasFairing: ");
+                            Console.Write("Does it have fairing (true/false): ");
                             bool hasFairing = Convert.ToBoolean(Console.ReadLine());
 
-                            motorcycle.setModel(model);
-                            motorcycle.setManufacturer(manufacturer);
-                            motorcycle.setYear(year);
+                            motorcycle.Model = model;
+                            motorcycle.Manufacturer = manufacturer;
+                            motorcycle.Year = year;
 
-                            motorcycle.setEngineCapacity(engineCapacity);
-                            motorcycle.setFuelType(fuelType);
-                            motorcycle.setHasFairing(hasFairing);
+                            motorcycle.EngineCapacity = engineCapacity;
+                            motorcycle.FuelType = fuelType;
+                            motorcycle.HasFairing = hasFairing;
 
                             vehicle = motorcycle;
                         }
@@ -198,14 +202,12 @@ namespace PROG8051_Assign3
 
                 if (vehicle != null)
                 {
-                    Console.Write("RentalPrice: ");
+                    Console.Write("Rental Price: ");
                     double rentalPrice = Convert.ToDouble(Console.ReadLine());
 
-                    vehicle.setRentalPrice(rentalPrice);
+                    vehicle.RentalPrice = rentalPrice;
 
                     Fleet.Add(vehicle);
-
-                    Console.Clear();
 
                     Console.WriteLine($"\nAdded {vehicleType} to fleet");
                     vehicle.DisplayDetails();
@@ -222,9 +224,10 @@ namespace PROG8051_Assign3
             }
         }
 
+        // Removes vehicle from inventory
         public void RemoveFromFleet()
         {
-            Console.WriteLine("\nEnter id of vehicle: ");
+            Console.Write("\n \nEnter the Product ID of the vehicle you want to remove from the fleet: ");
             string vehicleID = Console.ReadLine();
 
             Vehicle vehicleMatch = null;
@@ -244,13 +247,11 @@ namespace PROG8051_Assign3
                 }
             }
 
-            Console.Clear();
-
             if (vehicleMatch != null)
             {
                 Fleet = filteredList;
 
-                Console.WriteLine($"\nRemoved entry with productID \"{vehicleMatch.ProductID}\"");
+                Console.WriteLine($"\nYou have removed vehicle with ProductID \"{vehicleMatch.ProductID}\".");
 
                 vehicleMatch.DisplayDetails();
             }
@@ -266,11 +267,14 @@ namespace PROG8051_Assign3
             }
         }
 
+        // Rents a vehicle from inventory
         public void RentFromFleet()
         {
-            Console.WriteLine("\nEnter vehicle type (Car, Motorcycle, Truck): ");
-            string vehicleType = Console.ReadLine()?.ToUpper();
+            //Console.Write("\n \nEnter the Product ID of the vehicle you want to rent from the fleet: ");
+            //string vehicleID = Console.ReadLine();
+
         }
     }
+
 
 }

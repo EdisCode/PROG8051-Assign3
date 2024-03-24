@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using PROG8051_Assign3;
+﻿using PROG8051_Assign3;
 
 class Program
 {
@@ -9,37 +8,34 @@ class Program
 
         RentalAgency rentalAgency = new RentalAgency();
 
-        // mock inventory data
-
+        // Inventory Data
         Car car = new Car();
+        car.Model = "2024 Tesla Model 3";
+        car.Manufacturer = "Tesla";
+        car.Year = 2024;
+        car.Seats = 5;
+        car.EngineType = "Electric";
+        car.Transmission = "1-speed direct drive";
+        car.Convertible = false;
+        car.RentalPrice = 145;
 
-        car.setModel("2024 Tesla Model 3");
-        car.setManufacturer("Tesla");
-        car.setYear(2024);
-        car.setSeats(5);
-        car.setEngineType("Electric");
-        car.setTransmission("1-speed direct drive");
-        car.setConvertible(false);
-        car.setRentalPrice(145);
         Truck truck = new Truck();
-
-        truck.setModel("2024 Hyundai Santa Cruz SE");
-        truck.setManufacturer("Hyundai");
-        truck.setYear(2024);
-        truck.setCapacity(1411);
-        truck.setTruckType("Pickup");
-        truck.setFourWheelDrive(false);
-        truck.setRentalPrice(120);
+        truck.Model = "2024 Hyundai Santa Cruz SE";
+        truck.Manufacturer = "Hyundai";
+        truck.Year = 2024;
+        truck.Capacity = 1411;
+        truck.TruckType = "Pickup";
+        truck.FourWheelDrive = false;
+        truck.RentalPrice = 120;
 
         Motorcycle motorcycle = new Motorcycle();
-
-        motorcycle.setModel("MT-07");
-        motorcycle.setManufacturer("Yamaha");
-        motorcycle.setYear(2014);
-        motorcycle.setEngineCapacity(3.7);
-        motorcycle.setFuelType("Gas");
-        motorcycle.setHasFairing(false);
-        motorcycle.setRentalPrice(165);
+        motorcycle.Model = "MT-07";
+        motorcycle.Manufacturer = "Yamaha";
+        motorcycle.Year = 2014;
+        motorcycle.EngineCapacity = 3.7;
+        motorcycle.FuelType = "Gas";
+        motorcycle.HasFairing = false;
+        motorcycle.RentalPrice = 165;
 
         rentalAgency.Fleet.Add(car);
         rentalAgency.Fleet.Add(truck);

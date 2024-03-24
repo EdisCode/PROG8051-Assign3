@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace PROG8051_Assign3
 {
@@ -10,59 +6,18 @@ namespace PROG8051_Assign3
 {
     public override string Type { get => "CAR"; }
 
-    protected int Seats;
-    protected string EngineType;
-    protected string Transmission;
-    protected bool Convertible;
-
-    public Car() { }
-
-    public int getSeats()
-    {
-        return Seats;
-    }
-
-    public void setSeats(int value)
-    {
-        Seats = value;
-    }
-
-    public string getEngineType()
-    {
-        return EngineType;
-    }
-
-    public void setEngineType(string value)
-    {
-        EngineType = value;
-    }
-
-    public string getTransmission()
-    {
-        return Transmission;
-    }
-
-    public void setTransmission(string value)
-    {
-        Transmission = value;
-    }
-
-    public bool getConvertible()
-    {
-        return Convertible;
-    }
-
-    public void setConvertible(bool value)
-    {
-        Convertible = value;
-    }
+    public int Seats { get; set; }
+    public string EngineType { get; set; }
+    public string Transmission { get; set; }
+    public bool Convertible { get; set; }
 
     public override void DisplayDetails()
     {
+        // Inherited method
         base.DisplayDetails();
 
         Console.WriteLine($"Seats: \"{Seats}\"");
-        Console.WriteLine($"EngineType: \"{EngineType}\"");
+        Console.WriteLine($"Engine Type: \"{EngineType}\"");
         Console.WriteLine($"Transmission: \"{Transmission}\"");
         Console.WriteLine($"Convertible: \"{Convertible}\"");
     }
