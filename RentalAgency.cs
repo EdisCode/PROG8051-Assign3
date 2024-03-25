@@ -85,7 +85,8 @@ namespace PROG8051_Assign3
             }
 
             Console.WriteLine("\n \nFleet:");
-            Fleet.ForEach(vehicle => {
+            Fleet.ForEach(vehicle =>
+            {
                 vehicle.DisplayDetails();
             });
             Console.WriteLine($"\nCars: {fleetRecord["CAR"]}");
@@ -107,7 +108,7 @@ namespace PROG8051_Assign3
 
             if ((new List<string> { "CAR", "TRUCK", "MOTORCYCLE" }).Contains(vehicleType))
             {
-                Console.WriteLine($"\nEnter details for {vehicleType}");
+                Console.WriteLine($"\nEnter details for the {vehicleType}:");
 
                 Console.Write("\nModel: ");
                 model = Console.ReadLine();
@@ -209,7 +210,7 @@ namespace PROG8051_Assign3
 
                     Fleet.Add(vehicle);
 
-                    Console.WriteLine($"\nAdded {vehicleType} to fleet");
+                    Console.WriteLine($"\nAdded {vehicleType} to fleet.");
                     vehicle.DisplayDetails();
                 }
             }
@@ -270,11 +271,44 @@ namespace PROG8051_Assign3
         // Rents a vehicle from inventory
         public void RentFromFleet()
         {
-            //Console.Write("\n \nEnter the Product ID of the vehicle you want to rent from the fleet: ");
-            //string vehicleID = Console.ReadLine();
+            Console.Write("\n \nEnter the Product ID of the vehicle you want to rent from the fleet: ");
+            string vehicleID = Console.ReadLine();
 
+            Vehicle vehicleMatch = null;
+
+            for (int i = 0; i < Fleet.Count; i++)
+            {
+                Vehicle vehicle = Fleet[i];
+
+                if (vehicle.ProductID == vehicleID)
+                {
+                    vehicleMatch = vehicle;
+                    break;
+                }
+            }
+
+            if (vehicleMatch != null)
+            {
+                vehicleMatch.DisplayDetails();
+
+                Console.WriteLine($"\n\"{vehicleMatch.Type}\" with Product ID \"{vehicleMatch.ProductID}\" is available to rent at \"${vehicleMatch.RentalPrice}\". Request? Y/N");
+
+                if (Char.ToLower(Console.ReadKey().KeyChar) == 'y')
+                {
+                    TotalRevenue += vehicleMatch.RentalPrice;
+
+                    Console.WriteLine("\nRide requested!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nNo match found. Try searching again? Y/N");
+
+                if (Char.ToLower(Console.ReadKey().KeyChar) == 'y')
+                {
+                    RentFromFleet();
+                }
+            }
         }
     }
-
-
 }

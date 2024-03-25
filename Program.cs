@@ -5,6 +5,7 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Welcome to VRMS - Your very own vehicle rental management system");
+        Console.WriteLine("\nVehicles available in fleet:");
 
         RentalAgency rentalAgency = new RentalAgency();
 
